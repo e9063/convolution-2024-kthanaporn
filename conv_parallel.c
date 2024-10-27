@@ -17,8 +17,8 @@ int main(){
     }
     // ---- end input and malloc----
 
-    double start, end;
-    start = omp_get_wtime();
+    // double start, end;
+    // start = omp_get_wtime();
     // implement here
     omp_set_num_threads(8);
     #pragma omp parallel for
@@ -27,10 +27,10 @@ int main(){
         for(int j=0;j<NF;j++){
             sum += A[i+j] * F[NF-j-1];
         }
-        // printf("%d\n", sum);
+        printf("%d\n", sum);
     }
-    end =omp_get_wtime();
-    printf("Time: %lf\n", (double)(end - start));
+    // end =omp_get_wtime();
+    // printf("Time: %lf\n", (double)(end - start));
 
     // ---- free memory ----
     free(F);
