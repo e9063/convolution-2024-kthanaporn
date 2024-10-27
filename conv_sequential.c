@@ -25,10 +25,9 @@ int main(){
         for(int j=0;j<NF;j++){
             sum += A[i+j] * F[NF-j-1];
         }
-        // printf("%d\n", sum);
+        printf("%d\n", sum);
     }
     end = omp_get_wtime();
-    printf("Time: %lf\n", (double)(end - start));
 
     // ---- free memory ----
     free(F);
