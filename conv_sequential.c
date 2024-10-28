@@ -18,8 +18,6 @@ int main(){
     // ---- end input and malloc----
 
     // implement here
-    // double start, end;
-    // start = omp_get_wtime();
     for(int i=0;i<=NA-NF;i++){
         int sum = 0;
         for(int j=0;j<NF;j++){
@@ -27,7 +25,6 @@ int main(){
         }
         printf("%d\n", sum);
     }
-    // end = omp_get_wtime();
 
     // ---- free memory ----
     free(F);

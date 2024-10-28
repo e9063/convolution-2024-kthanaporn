@@ -3,11 +3,12 @@
 #include <omp.h>
 
 int main(){
-    // ---- input and malloc A, F ----
+    // ---- input and malloc A, F, ANS ----
     int NA, NF;
     scanf("%d %d", &NA, &NF);
     int *A = malloc(sizeof(int) * NA);
     int *F = malloc(sizeof(int) * NF);
+    int *ANS = malloc(sizeof(int) * (NA - NF + 1));
 
     for(int i = 0; i < NA; i++){
         scanf("%d", &A[i]);
@@ -17,8 +18,6 @@ int main(){
     }
     // ---- end input and malloc----
 
-    // double start, end;
-    // start = omp_get_wtime();
     // implement here
     omp_set_num_threads(8);
     #pragma omp parallel for
@@ -27,14 +26,17 @@ int main(){
         for(int j=0;j<NF;j++){
             sum += A[i+j] * F[NF-j-1];
         }
-        printf("%d\n", sum);
+        ANS[i] = sum;
     }
-    // end =omp_get_wtime();
-    // printf("Time: %lf\n", (double)(end - start));
+
+    for(int i=0;i<=NA-NF;i++){
+        printf("%d\n", ANS[i]);
+    }
 
     // ---- free memory ----
     free(F);
     free(A);
+    free(ANS);
     // ---- end free ----
     return 0;
 }
