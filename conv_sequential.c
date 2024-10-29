@@ -19,11 +19,11 @@ int main(){
 
     // implement here
     for(int i=0;i<=NA-NF;i++){
-        int sum = 0;
+        long long int sum = 0;
         for(int j=0;j<NF;j++){
             sum += A[i+j] * F[NF-j-1];
         }
-        printf("%d\n", sum);
+        printf("%lld\n", sum);
     }
 
     // ---- free memory ----

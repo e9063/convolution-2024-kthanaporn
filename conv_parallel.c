@@ -8,7 +8,7 @@ int main(){
     scanf("%d %d", &NA, &NF);
     int *A = malloc(sizeof(int) * NA);
     int *F = malloc(sizeof(int) * NF);
-    int *ANS = malloc(sizeof(int) * (NA - NF + 1));
+    long long int *ANS = malloc(sizeof(long long int) * (NA - NF + 1));
 
     for(int i = 0; i < NA; i++){
         scanf("%d", &A[i]);
@@ -22,7 +22,7 @@ int main(){
     omp_set_num_threads(8);
     #pragma omp parallel for
     for(int i=0;i<=NA-NF;i++){
-        int sum = 0;
+        long long int sum = 0;
         for(int j=0;j<NF;j++){
             sum += A[i+j] * F[NF-j-1];
         }
@@ -30,7 +30,7 @@ int main(){
     }
 
     for(int i=0;i<=NA-NF;i++){
-        printf("%d\n", ANS[i]);
+        printf("%lld\n", ANS[i]);
     }
 
     // ---- free memory ----
